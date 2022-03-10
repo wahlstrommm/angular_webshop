@@ -1,0 +1,33 @@
+.mainContainer {
+  width: 400px;
+  height: 900px;
+  background-color: red;
+}
+ul {
+  list-style: none;
+  li {
+    font-size: 1.2rem;
+  }
+}
+.cartContainer {
+  position: absolute;
+  right: 0px;
+  top: 60px;
+  z-index: 999;
+  width: 300px;
+  height: auto;
+  background-color: rgb(235, 233, 233);
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  border-radius: 10px 15px 20px; /* top left, top right, bottom right, bottom left */
+  display: flex;
+  justify-content: center;
+}
+.cartItemsContainer {
+  position: relative;
+  top: 5%;
+  height: 90%;
+  width: 90%;
+  text-align: center;
+}

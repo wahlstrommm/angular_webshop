@@ -1,0 +1,25 @@
+body {
+  background-color: green;
+}
+main {
+  height: 1000px;
+  width: 100%;
+}
+.mainContainer {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  background-color: red;
+  justify-content: center;
+}
+.formContainer {
+  width: 80%;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+}
+.imgCheckout {
+  height: 55px;
+  width: 55px;
+  border-radius: 5%;
+}

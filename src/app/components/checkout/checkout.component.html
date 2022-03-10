@@ -1,0 +1,156 @@
+<body>
+  <main class="main">
+    <article class="mainContainer">
+      <article class="formContainer">
+        <div *ngIf="itemOverview">
+          <h1>Översikt över dina val!</h1>
+          <br /><br />
+
+          <p *ngFor="let p of itemsToBasket; let i = index">
+            <br />
+            {{ p.product }}
+            {{ p.price }} :-
+
+            <button (click)="removeItem(itemsToBasket.splice(i, 1))">
+              Ta bort!
+            </button>
+            <br /><br />
+          </p>
+          {{ removedItemText }}
+
+          <br /><br />
+          <h3 *ngIf="itemsArrayFromUser.length > 0">
+
+            Summa att betala: {{ totalSumToPay }} :-<br /><br />
+
+            Ser allt bra ut? Tryck <button (click)="showInformationForm()"> här </button> för att gå vidare!
+          </h3>
+
+          <div *ngIf="itemsArrayFromUser.length == 0">
+            <h3>Din varukorg är tom!</h3>
+            <p>
+              För att se våra produkter tryck här:
+              <button>
+                <a routerLink="/products" routerLinkActive="active">Här</a>
+              </button>
+            </p>
+          </div>
+        </div>
+
+        <article *ngIf="fromContainer">
+          <div>
+
+            <h1>Uppgifter!</h1>
+
+            <form [formGroup]="userInfoForm" *ngIf="formContainer">
+              <input type="text" formControlName="userFName" placeholder="Förnamn" />
+
+              <div *ngIf="userInfoForm.get('userFName')?.invalid && (userInfoForm.get('userFName')?.touched ||userInfoForm.get('userFName')?.dirty) " >
+                
+                <div *ngIf="userInfoForm.get('userFName')?.errors?.['required']" >
+                  Detta fält är obligatoriskt!
+                </div>
+
+                <div *ngIf="userInfoForm.get('userFName')?.errors?.['minlength']">
+                  Ert förnamn måste innehålla minst två tecken!
+                </div>
+
+              </div>
+                <input type="text" formControlName="userLName" placeholder="Efternamn"/>
+                
+                <br /><br />
+
+                <div *ngIf="userInfoForm.get('userLName')?.invalid && (userInfoForm.get('userLName')?.touched ||userInfoForm.get('userLName')?.dirty)" >
+
+                    <div *ngIf="userInfoForm.get('userLName')?.errors?.['required']" >
+                      Detta fält är obligatoriskt!
+                    </div>
+
+                    <div *ngIf="userInfoForm.get('userLName')?.errors?.['minlength']" >
+                      Ert efternamn måste innehålla minst två tecken!
+                    </div>  
+
+                </div>
+              
+
+              <input type="text" formControlName="userAdress" placeholder="Adress" />
+
+              <div *ngIf="userInfoForm.get('userAdress')?.invalid && (userInfoForm.get('userAdress')?.touched ||userInfoForm.get('userAdress')?.dirty)" >
+
+                  <div *ngIf="userInfoForm.get('userAdress')?.errors?.['required']" >
+                    Detta fält är obligatoriskt!
+                  </div>
+
+                  <div *ngIf="userInfoForm.get('userAdress')?.errors?.['minlength']" >
+                    Ert adress måste innehålla minst tre tecken!
+                  </div>  
+
+              </div>
+
+              <input type="text" formControlName="userZipCode"  placeholder="Postkod" />
+                <div *ngIf="userInfoForm.get('userZipCode')?.invalid && (userInfoForm.get('userZipCode')?.touched ||userInfoForm.get('userZipCode')?.dirty)" >
+
+                  <div *ngIf="userInfoForm.get('userZipCode')?.errors?.['required']" >
+                    Detta fält är obligatoriskt!
+                  </div>
+
+                  <div *ngIf="userInfoForm.get('userZipCode')?.errors?.['minlength']" >
+                    Ert postkod måste innehålla minst fyra tecken!
+                  </div>  
+
+                </div>
+              <br /><br />
+
+              <input type="text" formControlName="userMobile" placeholder="mobil"/>
+              <div *ngIf="userInfoForm.get('userMobile')?.invalid && (userInfoForm.get('userMobile')?.touched ||userInfoForm.get('userMobile')?.dirty)" >
+
+                <div *ngIf="userInfoForm.get('userMobile')?.errors?.['required']" >
+                  Detta fält är obligatoriskt!
+                </div>
+
+                <div *ngIf="userInfoForm.get('userMobile')?.errors?.['minlength']" >
+                  Ert telefonnummer måste innehålla minst tio siffror!
+                </div>  
+                <br /><br />
+              </div>
+
+              <input type="text" formControlName="userEmail" placeholder="Email" />
+              <div *ngIf="userInfoForm.get('userEmail')?.invalid && (userInfoForm.get('userEmail')?.touched ||userInfoForm.get('userEmail')?.dirty)" >
+
+                <div *ngIf="userInfoForm.get('userEmail')?.errors?.['required']" >
+                  Detta fält är obligatoriskt!
+                </div>
+
+                <div *ngIf="userInfoForm.get('userEmail')?.errors?.['minlength']" >
+                  Ert mail måste ni skriva!
+                </div>  
+
+              </div>
+              <br /> <br /><br />
+            </form>
+
+            <br /><br />
+            <div *ngIf="summaryContainer">
+              Antal produkter: {{ itemsToBasket.length }} st<br />
+              Total kostnad: {{ totalSumToPay }} :-<br /><br />
+            
+
+            
+            <button (click)="card()" [disabled]="!cardMethod" *ngIf="userInfoForm.valid">Card</button>
+            <button (click)="paypal()" [disabled]="!paypalMethod" *ngIf="userInfoForm.valid">Paypal</button>
+
+            <br /><br />
+            <button [disabled]="!choosePayMethod" type="submit" (click)="sendOrder()">Skicka order!</button>
+          </div>
+          </div>
+        </article>
+        <article *ngIf="thankYouContainer">
+          <h1>Tack! Att ni handlar hos oss!</h1>
+          <h1>Om ni skulle vilja kolla på fler varor finner ni det <button>
+            <a routerLink="/products" routerLinkActive="active">Här</a>
+          </button></h1>
+        </article>
+      </article>
+    </article>
+  </main>
+</body>

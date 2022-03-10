@@ -1,0 +1,22 @@
+<body>
+  <main class="main">
+    <article class="container">
+      <article class="orderContainerAdmin">
+        <h1>Admin översikt!</h1>
+        <br /><br />
+        <h2>orders:</h2>
+        <ul>
+          <li *ngFor="let orders of orderOverview;let i =index">
+           id: {{orders.id}}
+           kund: {{orders.createdBy}}
+           betalsätt: {{orders.paymentMethod}}
+           summan: {{orders.totalPrice}}
+           <button (click)="removeOrder(orders.id,orderOverview.splice(i, 1))">Ta bort!</button>
+          </li>
+        </ul>
+        <h2>total: {{totalSumToPay}}</h2>
+        <h2>antal ordrar: {{orders.length}} st</h2>
+      </article>
+    </article>
+  </main>
+</body>
