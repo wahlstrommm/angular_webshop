@@ -3,34 +3,34 @@
     <article class="mainContainer">
       <article class="formContainer">
         <div *ngIf="itemOverview">
-          <h1>Översikt över dina val!</h1>
+          <h1 class="heading">Översikt över dina val!</h1>
           <br /><br />
 
           <p *ngFor="let p of itemsToBasket; let i = index">
             <br />
-            {{ p.product }}
-            {{ p.price }} :-
+           <b>{{ p.product }} </b> 
+           <b>{{ p.price }} </b>:-
 
-            <button (click)="removeItem(itemsToBasket.splice(i, 1))">
+            <button class="btnRemove" (click)="removeItem(itemsToBasket.splice(i, 1))">
               Ta bort!
             </button>
             <br /><br />
           </p>
-          {{ removedItemText }}
+         <h2>{{ removedItemText }}</h2> 
 
           <br /><br />
           <h3 *ngIf="itemsArrayFromUser.length > 0">
 
             Summa att betala: {{ totalSumToPay }} :-<br /><br />
 
-            Ser allt bra ut? Tryck <button (click)="showInformationForm()"> här </button> för att gå vidare!
+            Ser allt bra ut? Tryck <button class="btnRemove" (click)="showInformationForm()"> här </button> för att gå vidare!
           </h3>
 
           <div *ngIf="itemsArrayFromUser.length == 0">
-            <h3>Din varukorg är tom!</h3>
+            <h2>Din varukorg är tom!</h2>
             <p>
-              För att se våra produkter tryck här:
-              <button>
+              För att se våra produkter tryck: 
+              <button class="btnRemove">
                 <a routerLink="/products" routerLinkActive="active">Här</a>
               </button>
             </p>
@@ -42,17 +42,17 @@
 
             <h1>Uppgifter!</h1>
 
-            <form [formGroup]="userInfoForm" *ngIf="formContainer">
+            <form [formGroup]="userInfoForm" *ngIf="formContainer" class="Forms">
               <input type="text" formControlName="userFName" placeholder="Förnamn" />
 
               <div *ngIf="userInfoForm.get('userFName')?.invalid && (userInfoForm.get('userFName')?.touched ||userInfoForm.get('userFName')?.dirty) " >
                 
                 <div *ngIf="userInfoForm.get('userFName')?.errors?.['required']" >
-                  Detta fält är obligatoriskt!
+                  <p class="textAmountAndPrice">Detta fält är obligatoriskt!</p>
                 </div>
 
                 <div *ngIf="userInfoForm.get('userFName')?.errors?.['minlength']">
-                  Ert förnamn måste innehålla minst två tecken!
+                  <p class="textAmountAndPrice">Ert förnamn måste innehålla minst två tecken!</p>
                 </div>
 
               </div>
@@ -63,11 +63,11 @@
                 <div *ngIf="userInfoForm.get('userLName')?.invalid && (userInfoForm.get('userLName')?.touched ||userInfoForm.get('userLName')?.dirty)" >
 
                     <div *ngIf="userInfoForm.get('userLName')?.errors?.['required']" >
-                      Detta fält är obligatoriskt!
+                      <p class="textAmountAndPrice">Detta fält är obligatoriskt!</p>
                     </div>
 
                     <div *ngIf="userInfoForm.get('userLName')?.errors?.['minlength']" >
-                      Ert efternamn måste innehålla minst två tecken!
+                     <p class="textAmountAndPrice"> Ert efternamn måste innehålla minst två tecken!</p>
                     </div>  
 
                 </div>
@@ -78,11 +78,11 @@
               <div *ngIf="userInfoForm.get('userAdress')?.invalid && (userInfoForm.get('userAdress')?.touched ||userInfoForm.get('userAdress')?.dirty)" >
 
                   <div *ngIf="userInfoForm.get('userAdress')?.errors?.['required']" >
-                    Detta fält är obligatoriskt!
+                    <p class="textAmountAndPrice">Detta fält är obligatoriskt!</p>
                   </div>
 
                   <div *ngIf="userInfoForm.get('userAdress')?.errors?.['minlength']" >
-                    Ert adress måste innehålla minst tre tecken!
+                    <p class="textAmountAndPrice">Ert adress måste innehålla minst tre tecken!</p>
                   </div>  
 
               </div>
@@ -91,11 +91,11 @@
                 <div *ngIf="userInfoForm.get('userZipCode')?.invalid && (userInfoForm.get('userZipCode')?.touched ||userInfoForm.get('userZipCode')?.dirty)" >
 
                   <div *ngIf="userInfoForm.get('userZipCode')?.errors?.['required']" >
-                    Detta fält är obligatoriskt!
+                    <p class="textAmountAndPrice">Detta fält är obligatoriskt!</p>
                   </div>
 
                   <div *ngIf="userInfoForm.get('userZipCode')?.errors?.['minlength']" >
-                    Ert postkod måste innehålla minst fyra tecken!
+                    <p class="textAmountAndPrice">Ert postkod måste innehålla minst fyra tecken!</p>
                   </div>  
 
                 </div>
@@ -105,11 +105,11 @@
               <div *ngIf="userInfoForm.get('userMobile')?.invalid && (userInfoForm.get('userMobile')?.touched ||userInfoForm.get('userMobile')?.dirty)" >
 
                 <div *ngIf="userInfoForm.get('userMobile')?.errors?.['required']" >
-                  Detta fält är obligatoriskt!
+                  <p class="textAmountAndPrice">Detta fält är obligatoriskt!</p>
                 </div>
 
                 <div *ngIf="userInfoForm.get('userMobile')?.errors?.['minlength']" >
-                  Ert telefonnummer måste innehålla minst tio siffror!
+                  <p class="textAmountAndPrice">Ert telefonnummer måste innehålla minst tio siffror!</p>
                 </div>  
                 <br /><br />
               </div>
@@ -118,11 +118,11 @@
               <div *ngIf="userInfoForm.get('userEmail')?.invalid && (userInfoForm.get('userEmail')?.touched ||userInfoForm.get('userEmail')?.dirty)" >
 
                 <div *ngIf="userInfoForm.get('userEmail')?.errors?.['required']" >
-                  Detta fält är obligatoriskt!
+                  <p class="textAmountAndPrice">Detta fält är obligatoriskt!</p>
                 </div>
 
                 <div *ngIf="userInfoForm.get('userEmail')?.errors?.['minlength']" >
-                  Ert mail måste ni skriva!
+                  <p class="textAmountAndPrice">Ert mail måste ni skriva!</p>
                 </div>  
 
               </div>
@@ -131,24 +131,26 @@
 
             <br /><br />
             <div *ngIf="summaryContainer">
-              Antal produkter: {{ itemsToBasket.length }} st<br />
-              Total kostnad: {{ totalSumToPay }} :-<br /><br />
-            
+              <p class="textAmountAndPrice">Antal produkter: <b>{{itemsToBasket.length }}</b> st</p> <br />
+              <p class="textAmountAndPrice">Total kostnad: <b>{{ totalSumToPay }}</b> :-</p> <br /><br />
+              
 
-            
-            <button (click)="card()" [disabled]="!cardMethod" *ngIf="userInfoForm.valid">Card</button>
-            <button (click)="paypal()" [disabled]="!paypalMethod" *ngIf="userInfoForm.valid">Paypal</button>
+              
+              <button (click)="card()" [disabled]="!cardMethod" *ngIf="userInfoForm.valid" class="btn">Card</button>
+              <button (click)="paypal()" [disabled]="!paypalMethod" *ngIf="userInfoForm.valid" class="btn">Paypal</button>
 
-            <br /><br />
-            <button [disabled]="!choosePayMethod" type="submit" (click)="sendOrder()">Skicka order!</button>
-          </div>
+              <br /><br />
+              <button [disabled]="!choosePayMethod" type="submit" (click)="sendOrder()" class="btn">Skicka order!</button>
+            </div>
           </div>
         </article>
         <article *ngIf="thankYouContainer">
           <h1>Tack! Att ni handlar hos oss!</h1>
-          <h1>Om ni skulle vilja kolla på fler varor finner ni det <button>
-            <a routerLink="/products" routerLinkActive="active">Här</a>
-          </button></h1>
+          <h1>Om ni skulle vilja kolla på fler varor finner ni det 
+            <button class="btn">
+              <a routerLink="/products" routerLinkActive="active">Här</a>
+            </button>
+          </h1>
         </article>
       </article>
     </article>

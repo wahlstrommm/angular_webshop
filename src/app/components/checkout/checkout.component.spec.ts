@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CheckoutComponent } from './checkout.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 describe('CheckoutComponent', () => {
   let component: CheckoutComponent;
@@ -8,7 +9,7 @@ describe('CheckoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CheckoutComponent ]
+      declarations: [ CheckoutComponent ],imports: [HttpClientModule]
     })
     .compileComponents();
   });
@@ -19,7 +20,7 @@ describe('CheckoutComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should check that cart isnt empty', () => {
-  //   expect(component.itemsToBasket.length).toBeGreaterThanOrEqual(1);
-  // });
+  it('should check that cart isnt empty', () => {
+    expect(component.itemsToBasket.length).toBeGreaterThanOrEqual(1);
+  });
 });

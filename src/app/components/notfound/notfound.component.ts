@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NotfoundComponent implements OnInit {
 
   constructor() { }
-
+  svg404:string ='/assets/404.svg';
   ngOnInit(): void {
   }
 

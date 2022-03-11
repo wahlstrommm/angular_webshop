@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductsComponent } from './products.component';
-
+import { HttpClientModule } from '@angular/common/http';
 describe('ProductsComponent', () => {
   let component: ProductsComponent;
   let fixture: ComponentFixture<ProductsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductsComponent ]
+      declarations: [ ProductsComponent ], imports: [HttpClientModule]
     })
     .compileComponents();
   });
@@ -19,7 +19,11 @@ describe('ProductsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should add item to productsToBasket', () => {
+    expect(component.productsToBasket.length).toBeLessThanOrEqual(0);
+
+    (component.addItem(77,"Interstellar",129))
+
+    expect(component.productsToBasket.length).toBeGreaterThanOrEqual(1);
   });
 });

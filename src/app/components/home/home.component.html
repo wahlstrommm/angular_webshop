@@ -1,12 +1,9 @@
 <body>
   <section class="backgroundContainerHomepage">
     <article class="flex-container">
-      <h1 class="headingHomepage">Några av våra Filmer:</h1>
       <div class="prod" *ngFor="let prod of products">
         <img src="{{ prod.imageUrl }}" class="imgContainer" alt="" />
         <h3>{{ prod.name }}</h3>
-        <!-- <p>{{ prod.price }} kr</p>
-        <p>Produkt id: {{ prod.id }}</p> -->
       </div>
     </article>
     <button class="btn">

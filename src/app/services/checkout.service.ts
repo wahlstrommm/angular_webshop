@@ -8,13 +8,13 @@ import { IOrder } from '../models/Order';
 })
 export class CheckoutService {
   constructor(private http: HttpClient) {}
+
   sendOrder(order:any){
     const httpHeaders = new HttpHeaders();
     httpHeaders.append("Content-Type","application/json");
     this.http.post<IOrder>(environment.ordersURL,order,).subscribe((orderToApi)=>{
       console.log(orderToApi);
     })
-  
 }}
     
   

@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class GetOrdersForAdminService {
+  
   private ordersData= new Subject<IOrder>();
   ordersData$ = this.ordersData.asObservable();
 
@@ -16,7 +17,6 @@ export class GetOrdersForAdminService {
     this.http
       .get<any>(environment.myCompanyOrdersURL)
       .subscribe((orderDataFromApi) => {
-        console.log(orderDataFromApi);
         this.ordersData.next(orderDataFromApi);
       });
   }

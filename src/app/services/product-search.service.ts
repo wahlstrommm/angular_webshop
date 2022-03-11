@@ -20,7 +20,6 @@ export class ProductSearchService {
       .get<IProducts[]>(environment.searchUrl+serachInput)
       .subscribe((productSerachDataFromApi) => {
         this.productsSerachData.next(productSerachDataFromApi);
-        console.log(productSerachDataFromApi);
         this.searchResult=productSerachDataFromApi;
       });
   }

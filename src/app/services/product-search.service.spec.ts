@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ProductSearchService } from './product-search.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('ProductSearchService', () => {
   let service: ProductSearchService;

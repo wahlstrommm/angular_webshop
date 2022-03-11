@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin.component';
 
 describe('AdminComponent', () => {
@@ -8,7 +8,7 @@ describe('AdminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminComponent ]
+      declarations: [ AdminComponent ],imports: [HttpClientModule]
     })
     .compileComponents();
   });
@@ -19,7 +19,8 @@ describe('AdminComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+ //Mitt andra avancerade test
+ it("should be zero or greater depending on orders", ()=>{
+  expect(component.orderOverview.length).toBeGreaterThanOrEqual(0);
+});
 });

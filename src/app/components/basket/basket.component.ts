@@ -10,18 +10,12 @@ export class BasketComponent implements OnInit {
   constructor(private basketService: BasketService) {}
   itemsToBasket: any;
   itemsInfoToBasket:any;
-  toogleContainer: boolean = false;
-  toogleDisplay() {
-    this.toogleContainer = !this.toogleContainer;
-  }
+
   ngOnInit(): void {
     this.basketService.activeOrder.subscribe(
-      (itemsToBasket) => (this.itemsToBasket = itemsToBasket)
-    );
+      (itemsToBasket) => (this.itemsToBasket = itemsToBasket));
     this.itemsArrayFromUser=this.itemsToBasket
-
-    
-  }
+    }
   
   itemsArrayFromUser: any;
 

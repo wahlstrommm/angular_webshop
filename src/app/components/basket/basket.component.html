@@ -6,19 +6,17 @@
         <article class="cartItemsContainer">
           <ul>
             <li *ngFor="let p of itemsToBasket; let i = index">
-              ProduktID: {{ p.productId }}<br />
-              Namn: {{ p.product }}<br />
-              Pris: {{ p.price }} :-<br /><br />
+              <b>ProduktID:</b> {{ p.productId }}<br />
+              <b>Namn: </b>{{ p.product }}<br />
+              <b>Pris:</b> {{ p.price }} :-<br /><br />
             </li>
           </ul>
-          <a routerLink="checkout" routerLinkActive="active"
-            ><button
-              [disabled]="itemsToBasket == 0"
-              [hidden]="itemsToBasket == 0"
-            >
-              <img [src]="shield" alt="basket image" class="svgImg" />Betala!
-            </button></a
-          >
+          <a routerLink="checkout" routerLinkActive="active">
+            <button class="btnBuy"[disabled]="itemsToBasket == 0" [hidden]="itemsToBasket == 0">
+              <img [src]="shield" alt="basket image" class="svgImg" />
+              Betala!
+            </button>
+          </a>
         </article>
       </article>
     </section>

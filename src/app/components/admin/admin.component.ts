@@ -15,10 +15,9 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.ordersData$.subscribe((orderDataFromApi)=>{
       this.orders=orderDataFromApi;
-      console.log(this.orders);
-      
       this.orderOverview=this.orders;
       var sum = 0;
+
       for (var i of this.orderOverview) {
         sum += i.totalPrice;
       }
@@ -41,7 +40,11 @@ export class AdminComponent implements OnInit {
     
   }
 
+  showInfo(){
+    this.moreInfo=!this.moreInfo;
+  }
 
+  moreInfo:boolean=false;
 
 removeOrder(ordersId:number,removedItem:any){
   this.deleteService.deleteOrders(ordersId);

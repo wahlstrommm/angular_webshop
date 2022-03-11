@@ -104,7 +104,7 @@ export class CheckoutComponent implements OnInit {
      this.itemsToBasket[i].product="";
      this.itemsToBasket[i].amount=1;
     }
-    this.order=new IOrder((this.userInfoForm.value.userFName+ " " +this.userInfoForm.value.userLName + " " + " (Mange mecks multimedia MMM )"),this.paymentMethod,this.totalSumToPay,this.itemsToBasket)
+    this.order=new IOrder((this.userInfoForm.value.userFName+ " " +this.userInfoForm.value.userLName + " "),this.paymentMethod,this.totalSumToPay,this.itemsToBasket)
     this.checkoutService.sendOrder(this.order)
   
   }
