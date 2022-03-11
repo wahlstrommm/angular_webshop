@@ -7,9 +7,8 @@ import { environment } from 'src/environments/environment';
 export class DeleteOrdersService {
 
   constructor(private http:HttpClient) { }
-  myCompany:string="https://medieinstitutet-wie-products.azurewebsites.net/api/orders"
   deleteOrders(orderID:any){
-    this.http.delete(this.myCompany+"/"+orderID+"?"+"companyId=45").subscribe((deleteOrderDataFromApi)=>{
+    this.http.delete(environment.ordersURL+"/"+orderID+"?"+"companyId=45").subscribe((deleteOrderDataFromApi)=>{
       console.log(deleteOrderDataFromApi,orderID)
     })
   }
