@@ -4,6 +4,7 @@
     <section class="mainContainer">
       <article class="cartContainer">
         <article class="cartItemsContainer">
+
           <ul>
             <li *ngFor="let p of itemsToBasket; let i = index">
               <b>ProduktID:</b> {{ p.productId }}<br />
@@ -11,6 +12,7 @@
               <b>Pris:</b> {{ p.price }} :-<br /><br />
             </li>
           </ul>
+          
           <a routerLink="checkout" routerLinkActive="active">
             <button class="btnBuy"[disabled]="itemsToBasket == 0" [hidden]="itemsToBasket == 0">
               <img [src]="shield" alt="basket image" class="svgImg" />

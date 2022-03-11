@@ -114,7 +114,7 @@ export class CheckoutComponent implements OnInit {
   fromContainer: boolean = false;
 
   thankYouContainer:boolean=false;
-  totalSums: any;
+
   summaryContainer:boolean=true;
   showInformationForm() {
     this.fromContainer = !this.fromContainer;

@@ -15,8 +15,9 @@
 
 <article class="containerforProductCotainer">
     <article class="noMovieContainer" *ngIf="noMoviesContainer">
-       <p class="noMovieText"> Fanns inga filmer med detta namn! Tryck här för att se <button class="btn" (click)="showAllMovies()">Alla</button></p>                                              
+       <p class="noMovieText"> Fanns inga filmer med detta namn! Tryck här för att se <button class="btn" (click)="showAllMovies()">Alla</button>                                              
     </article>
+    
   <article class="productsContainer" *ngIf="prodContainerAll" >
 
     <div class="prodprodAll" *ngFor="let prod of products; let i = index">
@@ -58,9 +59,9 @@
   </article>
 
   <article class="productsContainer" *ngIf="prodContainerSerach">
-    <div *ngIf="resultFromSearch.length>0">
-      <div class="prodprodAll" *ngFor="let prod of resultFromSearch; let i = index">
-        <div>
+    <div class="prodprodAll" *ngFor="let prod of resultFromSearch; let i = index">
+        <div *ngIf="resultFromSearch.length>0">
+
           <img src="{{ prod.imageUrl }}" class="imgContainer" alt="Image on the movie: {{ prod.name }}"/>
             <h3>{{ prod.name }}</h3>
 
@@ -71,7 +72,7 @@
             </ul>
             
           <button class="btnBuy"(click)="addItem(prod.id, prod.name, prod.price)">Köp!</button>
-        </div>
+        
       </div>
     </div>
   </article>

@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ICategories } from 'src/app/models/ICategories';
 import { IProducts } from 'src/app/models/IProduct';
 import { IProductCategory } from 'src/app/models/IProductCategory';
 import { OrderToBasket } from 'src/app/models/OrderToBasket';
@@ -32,9 +33,9 @@ export class ProductsComponent implements OnInit {
 
   products: IProducts[] = [];
   productsToBasket: any[] = [];
-  productsInfoToBasket:any[]=[]
+  productsInfoToBasket:IProducts[]=[]
   itemsToBasket: any;
-  allCategory:any[]=[]
+  allCategory:ICategories[]=[]
   resultFromSearch:IProducts[]=[]
   ngOnInit(): void {
     this.service.productsData$.subscribe((productDataFromApi) => {
@@ -100,9 +101,10 @@ filterCategory(value:string){
   }
 
   showAllMovies(){
-    this.prodContainerfilter=false;
     this.prodContainerAll=true;
+    this.prodContainerfilter=false;
     this.noMoviesContainer=false;
+    this.prodContainerSerach=false;
   }
 
   prodContainerSerach:boolean=false;
@@ -117,7 +119,7 @@ filterCategory(value:string){
     this.prodContainerAll=false;
     this.noMoviesContainer=false;
     this.prodContainerfilter=false;
-    
+
     if(this.resultFromSearch.length==0){
       this.noMoviesContainer=true;
       this.prodContainerAll=false;

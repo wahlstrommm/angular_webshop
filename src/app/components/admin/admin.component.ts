@@ -40,11 +40,6 @@ export class AdminComponent implements OnInit {
     
   }
 
-  showInfo(){
-    this.moreInfo=!this.moreInfo;
-  }
-
-  moreInfo:boolean=false;
 
 removeOrder(ordersId:number,removedItem:any){
   this.deleteService.deleteOrders(ordersId);
